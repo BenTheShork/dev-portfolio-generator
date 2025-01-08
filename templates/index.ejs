@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= name %>'s Portfolio</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><%= name %></h1>
+            <p class="bio"><%= bio %></p>
+            <div class="contact">
+                <% if (email) { %>
+                    <a href="mailto:<%= email %>">Email</a>
+                <% } %>
+                <% if (linkedinUrl) { %>
+                    <a href="<%= linkedinUrl %>" target="_blank">LinkedIn</a>
+                <% } %>
+                <a href="https://github.com/<%= githubUsername %>" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <% skills.forEach(skill => { %>
+                    <span class="skill-tag"><%= skill %></span>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <% repos.forEach(repo => { %>
+                    <div class="project-card">
+                        <h3><%= repo.name %></h3>
+                        <p><%= repo.description || 'No description available' %></p>
+                        <div class="project-meta">
+                            <% if (repo.language) { %>
+                                <span class="language"><%= repo.language %></span>
+                            <% } %>
+                            <span class="stars">⭐ <%= repo.stars %></span>
+                        </div>
+                        <a href="<%= repo.url %>" target="_blank" class="project-link">View Project</a>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Generated with Dev Portfolio Generator</p>
+        </div>
+    </footer>
+</body>
+</html>
