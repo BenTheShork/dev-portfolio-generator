@@ -14,7 +14,7 @@ Save time building your developer portfolio! This tool automatically fetches you
 
 ```bash
 # Clone and navigate
-git clone https://github.com/yourusername/dev-portfolio-generator.git
+git clone https://github.com/BenTheShork/dev-portfolio-generator.git
 cd dev-portfolio-generator
 
 # Install and link
