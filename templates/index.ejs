@@ -25,11 +25,32 @@
 
     <section class="skills">
         <div class="container">
-            <h2>Skills</h2>
+            <h2>Skills & Technologies</h2>
             <div class="skills-grid">
-                <% skills.forEach(skill => { %>
-                    <span class="skill-tag"><%= skill %></span>
-                <% }) %>
+                <% 
+                const categories = {
+                    'Programming Languages': skills.filter(skill => ['JavaScript', 'TypeScript', 'Python', 'Java', 'C++', 'C#', 'Ruby', 'Go', 'Swift', 'Kotlin', 'Rust'].includes(skill)),
+                    'Frontend Development': skills.filter(skill => ['React', 'Angular', 'Vue.js', 'Next.js', 'HTML5', 'CSS3', 'Sass/SCSS', 'Tailwind CSS', 'Material UI'].includes(skill)),
+                    'Backend Development': skills.filter(skill => ['Node.js', 'Django', 'Flask', 'Spring Boot', 'Express.js', 'FastAPI', 'GraphQL'].includes(skill)),
+                    'Mobile Development': skills.filter(skill => ['React Native', 'Flutter', 'iOS Development', 'Android Development'].includes(skill)),
+                    'Database': skills.filter(skill => ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Firebase'].includes(skill)),
+                    'Cloud & DevOps': skills.filter(skill => ['AWS', 'Google Cloud', 'Azure', 'Docker', 'Kubernetes', 'Jenkins', 'GitHub Actions', 'Terraform'].includes(skill)),
+                    'AI & Data Science': skills.filter(skill => ['Machine Learning', 'Deep Learning', 'TensorFlow', 'PyTorch', 'Computer Vision', 'NLP', 'Data Analysis', 'Pandas', 'Scikit-learn'].includes(skill)),
+                    'Other Technologies': skills.filter(skill => ['Git', 'RESTful APIs', 'Linux', 'Agile', 'CI/CD', 'Testing', 'Microservices', 'System Design', 'WebSockets'].includes(skill))
+                };
+                
+                Object.entries(categories).forEach(([category, categorySkills]) => {
+                    if (categorySkills.length > 0) {
+                %>
+                    <div class="skill-category">
+                        <h3><%= category %></h3>
+                        <div class="skill-tags">
+                            <% categorySkills.forEach(skill => { %>
+                                <span class="skill-tag"><%= skill %></span>
+                            <% }) %>
+                        </div>
+                    </div>
+                <% }}) %>
             </div>
         </div>
     </section>
